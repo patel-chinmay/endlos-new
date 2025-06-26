@@ -1,0 +1,147 @@
+.image-section {
+  width: 100vw;
+  height: 550px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.img-text {
+  position: absolute;
+  bottom: 10px;
+  font-weight: bold;
+  left: 45%;
+  color: white;
+  font-size: 50px;
+}
+.bg-image {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 550px;
+}
+@media only screen and (max-width: 500px) {
+  .img-text {
+    position: absolute;
+    bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    left: 15%;
+  }
+}
+.head-text {
+  font-size: 36px;
+}
+.para-text {
+  font-size: 20px;
+}
+.contact-us-section {
+  background-color: #ecedee;
+}
+.contact-us-border:hover {
+  color: #ff7722;
+}
+.mail-middle {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  height: 100px;
+  bottom: 50px;
+}
+
+.post-body ul,
+ol {
+  font-size: 110%;
+  line-height: 2.3;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.post-body pre {
+  background: #f4f4f4;
+  padding: 20px;
+  margin: 20px 0;
+  line-height: 2.3;
+}
+
+/* =============== */
+
+.btn {
+  display: inline-block;
+  background: steelblue;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+.btn-back {
+  background: #f4f4f4;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-page {
+  padding: 15px 30px;
+}
+
+.post-title {
+  margin: 10px 0;
+}
+
+.post-date {
+  background: #f4f4f4;
+  margin-bottom: 20px;
+  padding: 3px 10px;
+}
+
+.post-body ul,
+ol {
+  /* font-size: 110%;
+  line-height: 2.3;
+  font-weight: bold;
+  margin: 10px 0; */
+
+  display: none;
+}
+
+.post-body pre {
+  background: #f4f4f4;
+  padding: 20px;
+  margin: 20px 0;
+  line-height: 2.3;
+}
+
+@media (max-width: 500px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}

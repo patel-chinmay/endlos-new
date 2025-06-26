@@ -1,0 +1,86 @@
+.footer-wrapper {
+  background-color: #e1e1e2;
+  padding-top: 42px;
+}
+.footer-upper {
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 40px;
+}
+.floating-btn {
+  outline: none;
+  border: none;
+  background-color: #ff7722;
+  color: #ffffff;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+.floating-btn:hover {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #ff7722;
+  opacity: 1;
+}
+/* .footer-text-justify {
+  text-align: justify;
+  color: #ff7722;
+} */
+
+.footer-div {
+  justify-content: end;
+  display: flex;
+}
+
+.custom-line::before {
+  content: "";
+  position: absolute;
+  text-align: center;
+  bottom: -10px;
+  left: 50%; /* Set to 50% to center the line horizontally */
+  transform: translateX(-50%); /* Center the line with respect to the text */
+  height: 3px; /* Adjust this to change the line height */
+  width: 45%; /* Adjust this to change the line width */
+  background-color: #ff7722; /* Change color as needed */
+
+  transition: width 0.6s ease; /* Slower transition effect */
+}
+
+.custom-line:hover::before {
+  width: 60%; /* Change width on hover */
+}
+
+.custom-line20::before {
+  content: "";
+  position: absolute;
+  text-align: center;
+  bottom: -10px;
+  left: 50%; /* Set to 50% to center the line horizontally */
+  transform: translateX(-50%); /* Center the line with respect to the text */
+  height: 3px; /* Adjust this to change the line height */
+  width: 25%; /* Adjust this to change the line width */
+  background-color: #ff7722; /* Change color as needed */
+
+  transition: width 0.6s ease; /* Slower transition effect */
+}
+.custom-line20:hover::before {
+  width: 40%; /* Change width on hover */
+}
+.custom-line10::before {
+  content: "";
+  position: absolute;
+  text-align: center;
+  bottom: -10px;
+  left: 50%; /* Set to 50% to center the line horizontally */
+  transform: translateX(-50%); /* Center the line with respect to the text */
+  height: 3px; /* Adjust this to change the line height */
+  width: 15%; /* Adjust this to change the line width */
+  background-color: #ff7722; /* Change color as needed */
+
+  transition: width 0.6s ease; /* Slower transition effect */
+}
+.custom-line10:hover::before {
+  width: 20%; /* Change width on hover */
+}

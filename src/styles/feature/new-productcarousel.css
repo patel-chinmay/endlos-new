@@ -1,0 +1,21 @@
+.video-container {
+    width: 100vw;
+    object-fit: cover;
+    max-height: calc(100vh - 0px) !important;
+}
+.my-custom-dots li button:before {
+    background-color: #CCCCCC;
+    color: #CCCCCC !important;
+    opacity: 1 !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+  
+  .my-custom-dots li.slick-active button:before {
+    background-color: #FF7722;
+    transform: scale(1.5);
+    transition: all 0.35s !important;
+    color: #FF7722 !important;
+    width: 15px !important;
+    height: 15px !important;
+  }

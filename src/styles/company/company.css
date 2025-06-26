@@ -1,0 +1,48 @@
+.company-image-section {
+    width: 100vw;
+    height: 550px;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+
+.company-img-text {
+    position: absolute;
+    bottom: 10px;
+    font-weight: bold;
+    left: 45%;
+    color: white;
+    font-size: 50px;
+}
+@media only screen and (max-width: 500px) {
+    .company-img-text {
+        position: absolute;
+        bottom: 10px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        font-size: 50px;
+        left: 15%;
+    }
+  }
+.head-text{
+    font-size: 36px;
+}
+.para-text{
+    font-size: 20px;
+}
+.contact-us-section {
+    background-color: #ECEDEE;
+}
+.contact-us-border:hover {
+    color: #FF7722;
+}
+.mail-middle{
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    height: 100px;
+    bottom: 50px;
+}

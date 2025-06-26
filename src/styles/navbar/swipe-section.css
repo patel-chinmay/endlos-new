@@ -1,0 +1,41 @@
+.scrollable-container {
+    height: 500px;
+    overflow-x: auto;
+    width: 250px;
+    padding: 3rem 0;
+    border-right: 2px solid rgb(196, 196, 196);
+  }
+  
+  .scrollable-container::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  .right-icon{
+    transition: right 0.1s linear;
+    cursor: pointer;
+    padding-right: 1rem;
+  }
+  .right-icon{
+    transform: translateX(8px);
+    transition: right 2s linear;
+    cursor: pointer;
+  }
+  
+  .box {
+    width: 0;
+    animation: stretch 1s ease forwards;
+  }
+  @keyframes stretch {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 250px;
+    }
+  }   
+  .child-block{
+    display: block;
+    border-right: 2px solid rgb(196, 196, 196);
+  }   
+  .child-none{
+    display: none;
+  }   

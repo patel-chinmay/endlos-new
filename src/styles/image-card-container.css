@@ -1,0 +1,34 @@
+
+.inner {
+    overflow: hidden;
+}
+
+.inner img {
+    transition: all 1.5s ease;
+}
+
+.inner:hover img {
+    transform: scale(1.2);
+}
+
+.arrow-on-image {
+    position: absolute;
+    vertical-align: middle;
+    left: 30%;
+   bottom: 5%;
+}
+.image-container{
+    max-width: 100%;
+    min-width: 280px;
+    width: 500px;
+    height: 220px;
+}
+.text-height{
+height: 25%;
+text-align: justify;
+}
+@media only screen and (max-width: 1192px) {
+    .text-height{
+        height: auto;
+        }
+  }

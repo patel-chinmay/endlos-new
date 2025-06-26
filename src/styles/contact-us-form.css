@@ -1,0 +1,29 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.form-wrapper {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+.form-btn {
+  background: #ff7722;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.375rem;
+  line-height: 2rem;
+  outline: none;
+  padding: 4px 20px;
+  position: relative;
+  margin: 1rem 0 5rem 0;
+  color: #ffffff;
+  opacity: 0.9;
+}
+.form-btn:hover {
+  opacity: 1;
+}
+.industries-text-justify {
+  text-align: justify;
+}

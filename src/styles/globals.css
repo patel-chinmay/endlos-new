@@ -1,0 +1,205 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "./page.css";
+@import "./upper-container.css";
+@import "./image-card-container.css";
+
+/* @import "./blog.css"; */
+@import "./swiper-carousel.css";
+
+/* navbar css  */
+@import "./navbar/navbar.css";
+@import "./navbar/swipe-child-section.css";
+@import "./navbar/swipe-section.css";
+@import "./navbar/dropdown-section.css";
+@import "./navbar/mobile-navbar.css";
+
+/* footer css  */
+@import "./footer.css";
+
+/* industries  */
+
+@import "./industries/industries.css";
+@import "./industries/recycling-machines.css";
+@import "./industries/solid-waste-management.css";
+@import "./industries/vending-machines.css";
+
+/* products start here  */
+
+@import "./products/products.css";
+
+/* reverse vending machine start */
+@import "./products/reverse-vending-machines/reverse-vending-machine.css";
+@import "./products/reverse-vending-machines/rvm-eco.css";
+@import "./products/reverse-vending-machines/rvm-pro.css";
+@import "./products/reverse-vending-machines/rvm-premium.css";
+@import "./products/reverse-vending-machines/drs-11.css";
+@import "./products/reverse-vending-machines/drs-22.css";
+@import "./products/reverse-vending-machines/drs-35.css";
+/* reverse vending machine end */
+
+/* organic-waste-composter start */
+@import "./products/organic-waste-composter/organic-waste-composter.css";
+@import "./products/organic-waste-composter/owc-50.css";
+@import "./products/organic-waste-composter/owc-100.css";
+@import "./products/organic-waste-composter/owc-300.css";
+@import "./products/organic-waste-composter/owc-500.css";
+@import "./products/organic-waste-composter/owc-1000.css";
+
+/*organic-waste-composter end */
+
+/*product-vending-machine start */
+@import "./products/custom-vending-machine/custom-vending-machine.css";
+@import "./products/custom-vending-machine/mask-vending-machine.css";
+
+/*product-vending-machine end */
+
+/* products end here  */
+
+/* ===================== */
+
+/* company start here  */
+
+@import "./company/company.css";
+
+@import "./company/about-endlos.css";
+@import "./company/contact-us.css";
+@import "./company/careers.css";
+@import "./company/vacancies.css";
+@import "./company/location.css";
+@import "./company/our-teams.css";
+@import "./company/team-details.css";
+
+/* company end here  */
+
+/* tab-components start here  */
+
+@import "./tab-components/equipment.css";
+@import "./tab-components/overview-component.css";
+@import "./tab-components/technical-component.css";
+/* tab-components end here  */
+
+/* feature components start here  */
+
+@import "./feature/new-productcarousel.css";
+@import "./feature/product-carousel.css";
+
+/* feature components end here  */
+
+/* blog start here  */
+
+/* @import "./blog/blog-page.css"; */
+/* @import "./blog/blog.css"; */
+
+/* blog end here  */
+
+/*  components start here  */
+
+@import "./components/location-wrapper.css";
+@import "./components/our-team.css";
+
+/* -------------------------------- */
+
+/* page components start here  */
+
+@import "./components/pagecomponent//map-wrapper.css";
+
+/* page components end here  */
+
+/* --------------------------------------- */
+
+/*  components end here  */
+
+/* contact us form  */
+
+@import "./contact-us-form.css";
+
+/* @import './new-multislider.css'; */
+
+:root {
+  --max-width: 1920px;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}body {
+  background-color: #fff;
+  color: #000;
+  font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-hyphens: manual;
+  -moz-hyphens: manual;
+  -ms-hyphens: manual;
+  hyphens: manual;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "Tesla";
+  src: url("/assets/fonts/TESLA.woff");
+}
+.horizontal-rule {
+  color: inherit;
+  border-bottom: 1px solid gray;
+  opacity: 0.25;
+  padding: 1rem;
+  width: 50%;
+  margin: auto;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+.pointer {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+  padding: 1rem 0;
+}
+.text-color {
+  color: #ff7722 !important;
+}
+
+.endlos-text-justify {
+  text-align: justify;
+}
+.justify {
+  text-align: justify;
+}
+
+.backlinks {
+  color: #4b77be !important;
+}
+
+.backlinks:hover {
+  color: #4b77be !important;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.li-icon {
+  list-style-type: square;
+  padding: 0.3rem 0;
+}
+
+.bg-theme {
+  background-color: #ff7722 !important;
+}
+
+

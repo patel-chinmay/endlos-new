@@ -1,0 +1,125 @@
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  height: 68px;
+  align-items: center;
+  width: 100%;
+  padding: 10px 50px;
+  z-index: 999;
+  opacity: 0.9;
+  gap: 10px;
+  background-color: #ffffff;
+}
+
+.visible {
+  top: 0;
+  transition: top 0.4s ease-out;
+  position: sticky;
+}
+
+.hidden {
+  top: -80px;
+  position: sticky;
+  transition: top 0.4s ease-out;
+}
+
+.logo {
+  font-family: "Tesla";
+  color: #ff7722;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 5px;
+}
+
+@media (min-width: 1500px) {
+  .main {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main {
+    height: 100px;
+  }
+}
+
+.main {
+  height: 55px;
+}
+
+.menu-container {
+  order: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  padding: 0 45px;
+}
+
+.logo-container {
+  order: 1;
+}
+
+@media (max-width: 992px) {
+  .menu-container {
+    display: none;
+    height: auto;
+    padding: 0;
+    color: black;
+  }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 20px 25px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: calc(1499px)) {
+  .menu-container {
+    order: 4;
+    width: 100%;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 10px 135px;
+  }
+}
+
+.right-container {
+  order: 3;
+}
+.floating-btn {
+  outline: none;
+  border: none;
+  background-color: #ff7722;
+  color: #ffffff;
+  border-radius: 10px;
+  opacity: 0.9;
+  padding: 10px 10px;
+}
+.floating-btn:hover {
+  opacity: 1;
+}
+
+@media (min-width: 1500px) {
+  .floating-btn {
+    width: 100%;
+    width: 180px;
+  }
+}

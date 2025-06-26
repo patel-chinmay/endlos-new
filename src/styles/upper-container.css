@@ -1,0 +1,28 @@
+.heading-container {
+    /* width: 64%; */
+    font-weight: 700;
+    /* font-size: 2rem; */
+    font-size: 1.7rem;
+    margin: auto;
+}
+
+.paragraph-container {
+    /* width: 70%; */
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+.case-studies-button {
+    margin-top: 2rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid #595d61;
+    color: #595d61;
+    padding: 1rem 2rem;
+}
+
+.case-studies-button:hover {
+    color: #FF7722;
+    border: 2px solid #FF7722;
+}

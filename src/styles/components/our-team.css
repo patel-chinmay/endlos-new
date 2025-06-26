@@ -1,0 +1,49 @@
+.our-team-member-btn {
+  font-size: 1rem;
+  padding: 12px 37px;
+  background-color: #ff7722;
+  color: #ffffff !important;
+  border-radius: 0;
+  line-height: 1.5em;
+  cursor: pointer;
+}
+
+.our-team-member-btn:hover {
+  font-size: 1rem;
+  padding: 12px 37px;
+  background-color: #ffffff;
+  color: #ff7722 !important;
+  border-radius: 0;
+  line-height: 1.5em;
+  cursor: pointer;
+  border: 1px solid #ff7722;
+}
+
+.card:hover {
+  box-shadow: 8px 8px 8px 8px #e9ecef;
+  transform: scale(1);
+}
+
+.our-team-image {
+  border: 2px solid #fff;
+  width: 100%;
+  height: 433px;
+  overflow: hidden;
+}
+
+.our-team-image img {
+  width: 100%;
+  height: 433px;
+  transition: all 2s ease-in-out;
+}
+
+.our-team-image:hover img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+  .our-team-image {
+    width: 100%;
+    height: 100%;
+  }
+}

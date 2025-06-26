@@ -1,0 +1,21 @@
+.table-upper-color {
+  background: #cccccc;
+  color: black;
+}
+
+/* .technical-container,
+table {
+  max-width: 70vw;
+} */
+@media screen and (max-width: 600px) {
+  .technical-container {
+    overflow: auto;
+
+    /* overflow-x: scroll; */
+    /* display: none; */
+  }
+
+  .technical-container > table {
+    border: none;
+  }
+}
