@@ -4,6 +4,7 @@ import AdminSidebar from "@/components/AdminSidebar";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import SeoSettings from "@/components/admin/SEOComponent/SeoSettings";
 import BlogCategories from "@/components/admin/BlogCategories/BlogCategories";
+import BlogPost from "@/components/admin/BlogCategories/BlogsPost"
 
 const Dashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
@@ -26,7 +27,7 @@ const Dashboard = () => {
         );
 
       case "blog-posts":
-        return <h2 className="fw-bold">Blog Posts</h2>;
+        return <h2 className="fw-bold"><BlogPost/></h2>;
       case "inquiries":
         return <h2 className="fw-bold">Inquiries</h2>;
       case "subscription":
