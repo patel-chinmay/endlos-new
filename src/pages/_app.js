@@ -13,9 +13,9 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   // Check if the current route matches the blog detail page
-  // const isBlogDetailsPage = router.pathname.startsWith(
-  // "/company/blog-list/blog-details"
-  // );
+  const isBlogDetailsPage = router.pathname.startsWith(
+  "/company/blog-list/blog-details"
+  );
 
   return (
     <>
@@ -24,8 +24,8 @@ export default function App({ Component, pageProps }) {
       <ToastContainer autoClose={5000} position="top-right" />;
       <Toaster position="top-center" reverseOrder={true} />
       <Component {...pageProps} />
-      {/* {!isBlogDetailsPage && <Footer />} */}
-      <Footer />
+      {!isBlogDetailsPage && <Footer />}
+      {/* <Footer /> */}
     </>
   );
 }
