@@ -11,6 +11,7 @@ const DEFAULT_IMAGE =
 
 export default function BlogListPage() {
   const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [pagination, setPagination] = useState({
     start: 0,
     recordSize: 100,
@@ -22,6 +23,7 @@ export default function BlogListPage() {
   const router = useRouter();
 
   const fetchBlogs = async () => {
+    setIsLoading(true); // start loading
     try {
       const res = await fetch(
         `http://localhost:3002/api/blogs/public/search?start=${pagination.start}&recordSize=${pagination.recordSize}&orderType=${pagination.orderType}&orderParam=${pagination.orderParam}`,
@@ -41,6 +43,9 @@ export default function BlogListPage() {
       }));
     } catch (err) {
       console.error("Error fetching blogs:", err);
+    }
+    finally {
+      setIsLoading(false); // stop loading
     }
   };
 
@@ -100,6 +105,7 @@ export default function BlogListPage() {
         />
       </Head>
 
+
       <div
         className="w-100 d-flex align-items-center"
         style={{
@@ -122,19 +128,46 @@ export default function BlogListPage() {
 
       <div className="container my-4">
         <h2 className="mb-4 mt-5">📝 Blog Posts</h2>
-        <div className="row">
-          {blogs.map((blog) => (
-            <div key={blog._id} className="col-md-6 col-lg-4 mb-4">
-              <div className="card h-100 shadow-sm">
-                <img
-                  src={blog.image?.trim() || DEFAULT_IMAGE}
-                  alt="Blog Thumbnail"
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{blog.title}</h5>
-                  {/* <p className="text-muted mb-1">
+        {isLoading ? (
+          <div className="text-center my-5">
+            <div
+              className="d-flex justify-content-center align-items-center my-5"
+              style={{ height: "100px" }}
+            >
+              <div
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  border: "5px solid rgba(0, 0, 0, 0.1)",
+                  borderTopColor: "#ff7700",
+                  borderRadius: "50%",
+                  animation: "spin 1s linear infinite",
+                }}
+              />
+              <style>
+                {`
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    `}
+              </style>
+            </div>
+
+          </div>
+        ) : (
+          <div className="row">
+            {blogs.map((blog) => (
+              <div key={blog._id} className="col-md-6 col-lg-4 mb-4">
+                <div className="card h-100 shadow-sm">
+                  <img
+                    src={blog.image?.trim() || DEFAULT_IMAGE}
+                    alt="Blog Thumbnail"
+                    className="card-img-top"
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                  <div className="card-body d-flex flex-column">
+                    <h5 className="card-title">{blog.title}</h5>
+                    {/* <p className="text-muted mb-1">
                     <strong>Category:</strong> {blog.categoryId?.name || "N/A"}
                   </p>
                   <p className="text-muted mb-2">
@@ -142,33 +175,35 @@ export default function BlogListPage() {
                     <strong>On:</strong>{" "}
                     {new Date(blog.postedOn).toLocaleDateString()}
                   </p> */}
-                  <div
-                    className="card-text mb-3"
-                    style={{ maxHeight: "100px", overflow: "hidden" }}
-                  >
-                    {parse(blog.blogContent || "<p>No content available</p>")}
+                    <div
+                      className="card-text mb-3"
+                      style={{ maxHeight: "100px", overflow: "hidden" }}
+                    >
+                      {parse(blog.blogContent || "<p>No content available</p>")}
+                    </div>
+                    <button
+                      className="btn btn-outline-primary mt-auto"
+                      onClick={() =>
+                        router.push(`/company/blog-list/blog-details/${blog._id}`)
+                      }
+                    >
+                      Read More
+                    </button>
                   </div>
-                  <button
-                    className="btn btn-outline-primary mt-auto"
-                    onClick={() =>
-                      router.push(`/company/blog-list/blog-details/${blog._id}`)
-                    }
-                  >
-                    Read More
-                  </button>
                 </div>
               </div>
-            </div>
-          ))}
-          {blogs.length === 0 && (
-            <div className="col-12 text-center">
-              <p>No blogs found.</p>
-            </div>
-          )}
-        </div>
+            ))}
+            {blogs.length === 0 && (
+              <div className="col-12 text-center">
+                <p>No blogs found.</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <ContactUsEmail />
     </>
   );
+
 }
