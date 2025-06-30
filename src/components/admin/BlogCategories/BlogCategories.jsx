@@ -1,10 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { toast, ToastContainer } from "react-toastify";
-
-<ToastContainer autoClose={5000} position="top-right" />;
-
+import { showErrorToast, showSuccessToast } from "@/components/ToastMessage"
 export default function BlogCategories() {
   const [data, setData] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -43,7 +40,7 @@ export default function BlogCategories() {
         totalRecords: result.pagination.totalRecords,
       }));
     } catch (error) {
-      toast.error("Error fetching categories");
+      showErrorToast("Error fetching categories"); // ✅ Reusable toast
       console.error("Error fetching categories:", error);
     }
   };
@@ -78,7 +75,7 @@ export default function BlogCategories() {
       const result = await response.json();
 
       if (response.ok) {
-        toast.success(result.message || "Category saved successfully!");
+        showSuccessToast(result.message || "Category saved successfully!");
         setFormData({
           _id: null,
           name: "",
@@ -89,10 +86,10 @@ export default function BlogCategories() {
         setShowForm(false);
         fetchCategories();
       } else {
-        toast.error(result.message || "Failed to save category");
+        showErrorToast(result.message || "Failed to save category");
       }
     } catch (error) {
-      toast.error("Error submitting form");
+      showErrorToast("Error submitting form");
       console.error("Error submitting form:", error);
     }
   };
@@ -118,13 +115,13 @@ export default function BlogCategories() {
       const result = await response.json();
 
       if (response.ok) {
-        toast.success(result.message || "Category deleted successfully!");
+        showSuccessToast(result.message || "Category deleted successfully!");
         fetchCategories();
       } else {
-        toast.error(result.message || "Failed to delete category");
+        showErrorToast(result.message || "Failed to delete category");
       }
     } catch (error) {
-      toast.error("Error deleting category");
+      showErrorToast("Error deleting category");
       console.error("Error deleting category:", error);
     }
   };

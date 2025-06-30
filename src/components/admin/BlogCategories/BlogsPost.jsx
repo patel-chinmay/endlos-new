@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import { showErrorToast, showSuccessToast } from "@/components/ToastMessage";
 
 // Load ReactQuill dynamically to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -56,6 +57,7 @@ export default function BlogPost() {
       const result = await res.json();
       setCategories(result.data);
     } catch (err) {
+      showErrorToast("Error fetching categories:", err);
       console.error("Error fetching categories:", err);
     }
   };
@@ -79,6 +81,7 @@ export default function BlogPost() {
         totalRecords: result.pagination.totalRecords,
       }));
     } catch (err) {
+      showErrorToast("Error fetching blogs:", err);
       console.error("Error fetching blogs:", err);
     }
   };
@@ -143,13 +146,17 @@ export default function BlogPost() {
           description: "",
           image: null,
           imagePreview: "",
+          message: "",
         });
+        showSuccessToast(result.message);
         setShowForm(false);
         fetchBlogs();
       } else {
-        console.error("Failed to save blog:", result.message);
+        showErrorToast("Failed to save blog");
+        console.error("Failed to save blog");
       }
     } catch (error) {
+      showErrorToast("Failed to save blog:", error);
       console.error("Error submitting form:", error);
     }
     finally {
@@ -186,7 +193,9 @@ export default function BlogPost() {
       if (response.ok) {
         fetchBlogs();
       }
+      showSuccessToast("Deleted Successfully");
     } catch (error) {
+      showErrorToast("Error deleting blog:", error);
       console.error("Error deleting blog:", error);
     }
   };
