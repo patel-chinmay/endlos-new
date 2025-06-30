@@ -26,6 +26,7 @@ export default function BlogPost() {
   const [blogs, setBlogs] = useState([]);
   const [categories, setCategories] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     _id: null,
     title: "",
@@ -103,6 +104,7 @@ export default function BlogPost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // start loading
     const isEdit = !!formData._id;
     const url = isEdit
       ? `http://localhost:3002/api/blogs/${formData._id}`
@@ -149,6 +151,9 @@ export default function BlogPost() {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+    }
+    finally {
+      setIsSubmitting(false); // stop loading
     }
   };
 
@@ -338,9 +343,30 @@ export default function BlogPost() {
             ></textarea>
           </div>
 
-          <button type="submit" className="btn btn-success">
-            {formData._id ? "Update Blog" : "Create Blog"}
-          </button>
+          <button type="submit" className="btn btn-success" disabled={isSubmitting}>
+  {isSubmitting ? (
+    <span
+      style={{
+        width: "1rem",
+        height: "1rem",
+        border: "2px solid #fff",
+        borderTop: "2px solid transparent",
+        borderRadius: "50%",
+        display: "inline-block",
+        animation: "spin 0.6s linear infinite",
+      }}
+    ></span>
+  ) : (
+    formData._id ? "Update Blog" : "Create Blog"
+  )}
+  <style>
+    {`
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    `}
+  </style>
+</button>
         </form>
       )}
 
