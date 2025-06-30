@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
-// Load ReactQuill dynamically to avoid SSR issue
+// Load ReactQuill dynamically to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const modules = {
@@ -35,7 +35,10 @@ export default function BlogPost() {
     blogContent: "",
     keywords: "",
     description: "",
+    image: null, // File object
+    imagePreview: "", // For UI
   });
+
   const [pagination, setPagination] = useState({
     start: 0,
     recordSize: 10,
@@ -47,9 +50,7 @@ export default function BlogPost() {
   const fetchCategories = async () => {
     try {
       const res = await fetch("http://localhost:3002/api/categories/list", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       const result = await res.json();
       setCategories(result.data);
@@ -87,27 +88,44 @@ export default function BlogPost() {
   }, [pagination.start]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      const file = files[0];
+      setFormData((prev) => ({
+        ...prev,
+        image: file,
+        imagePreview: URL.createObjectURL(file),
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const isEdit = !!formData._id;
     const url = isEdit
       ? `http://localhost:3002/api/blogs/${formData._id}`
       : "http://localhost:3002/api/blogs";
     const method = isEdit ? "PUT" : "POST";
 
+    const body = new FormData();
+    body.append("title", formData.title);
+    body.append("categoryId", formData.categoryId);
+    body.append("postedBy", formData.postedBy);
+    body.append("postedOn", formData.postedOn);
+    body.append("blogContent", formData.blogContent);
+    body.append("keywords", formData.keywords);
+    body.append("description", formData.description);
+    if (formData.image) body.append("image", formData.image);
+
     try {
       const response = await fetch(url, {
         method,
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        body,
       });
 
       const result = await response.json();
@@ -121,6 +139,8 @@ export default function BlogPost() {
           blogContent: "",
           keywords: "",
           description: "",
+          image: null,
+          imagePreview: "",
         });
         setShowForm(false);
         fetchBlogs();
@@ -142,6 +162,8 @@ export default function BlogPost() {
       blogContent: blog.blogContent,
       keywords: blog.keywords,
       description: blog.description,
+      image: null,
+      imagePreview: blog.image || "",
     });
     setShowForm(true);
   };
@@ -205,6 +227,7 @@ export default function BlogPost() {
         <form
           onSubmit={handleSubmit}
           className="border p-4 shadow-sm bg-white rounded mb-4"
+          encType="multipart/form-data"
         >
           <div className="mb-3">
             <label className="form-label">Blog Title</label>
@@ -260,7 +283,7 @@ export default function BlogPost() {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="mb-4">
             <label className="form-label">Blog Content</label>
             <ReactQuill
               theme="snow"
@@ -272,6 +295,25 @@ export default function BlogPost() {
               className="bg-white"
               style={{ height: "250px" }}
             />
+          </div>
+
+          <div className="mb-3 mt-5">
+            <label className="form-label">Image</label>
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={handleChange}
+              className="form-control"
+            />
+            {formData.imagePreview && (
+              <img
+                src={formData.imagePreview}
+                alt="Preview"
+                className="img-thumbnail mt-2"
+                style={{ maxHeight: "200px" }}
+              />
+            )}
           </div>
 
           <div className="mb-3">
@@ -301,6 +343,9 @@ export default function BlogPost() {
           </button>
         </form>
       )}
+
+      {/* Blog Listing Table (unchanged) */}
+      {/* You can keep your existing table code from your version here */}
 
       <div className="table-responsive bg-white p-3 shadow-sm rounded">
         <table className="table table-hover border shadow-sm">
